@@ -1,0 +1,97 @@
+<% layout('layouts/main')  -%>
+    <div class="row" ng-controller="ppCtrl">
+        <div class="col-lg-10 offset-md-1">
+            <form class="form-inline" ng-submit="submit()">
+
+                <!-- <input list="batsmen" ng-model="p1">
+                <input list="batsmen" ng-model="p1">
+                <input list="batsmen" ng-model="p1"> -->
+
+
+                <!-- <label class="sr-only" for="p1">Batsman</label> -->
+                <input type="text" list="batsmen" class="form-control mb-2 mr-sm-2 mb-sm-0" ng-model="p1" id="p1" placeholder="Batsman" autocomplete="off">
+
+                <!-- <label class="sr-only" for="p2">Bowler</label> -->
+                <input type="text" list="bowlers" class="form-control  mb-2 mr-sm-2 mb-sm-0" ng-model="p2" id="p2" placeholder="Bowler" autocomplete="off">
+
+                <!-- <label class="sr-only" for="stadium">Stadium</label> -->
+                <input type="text" list="stadiums" class="form-control  mb-2 mr-sm-2 mb-sm-0" ng-model="stadium" id="stadium" placeholder="Stadium"
+                    autocomplete="off">
+
+
+                <datalist id="batsmen">
+                    <option ng-repeat="batsman in batsmen" value="{{batsman.name}}">
+                </datalist>
+                <datalist id="bowlers">
+                    <option ng-repeat="bowler in bowlers" value="{{bowler.name}}">
+                </datalist>
+                <datalist id="stadiums">
+                    <option ng-repeat="stadium in stadiums" value="{{stadium.name}}">
+                </datalist>
+                <button type="submit" class="btn btn-primary">Submit
+                    <span ng-if="sent">
+                        <i class="fa fa-spinner" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </form>
+            <div class="row" style="margin-top:3rem;">
+                <div ng-if="result" class="col-lg-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img class="card-img-top" ng-src="/images/{{result.batsman}}.png" alt="Card image cap" width="512px" height="">
+                                <div class="card-body">
+                                    <p class="card-title">{{result.batsman}}</p>
+                                    <p class="card-text">Strike Rate ::: {{result.strike_rate}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-white mb-3">
+                                <div class="card-header text-center">Vs</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">{{result.stadium}}</h4>
+                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                                    <table>
+                                        <tr>
+                                            <td>runs</td>
+                                            <td>{{result.runs}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>balls</td>
+                                            <td>{{result.balls}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dots</td>
+                                            <td>{{result.dots}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>fours</td>
+                                            <td>{{result.fours}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sixes</td>
+                                            <td>{{result.sixes}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>wickets</td>
+                                            <td>{{result.wickets}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img class="card-img-top" ng-src="/images/{{result.bowler}}.png" alt="Card image cap" width="512px" height="">
+                                <div class="card-body">
+                                    <p class="card-title">{{result.bowler}}</p>
+                                    <p class="card-text">Bowling Economy ::: {{result.bowler_economy}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

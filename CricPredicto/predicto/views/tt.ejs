@@ -1,0 +1,254 @@
+<% layout('layouts/main')  -%>
+    <div class="row" ng-controller="ttCtrl">
+        <div class="col-lg-10">
+            <form class="form-inline" ng-submit="submit()">
+
+                <!-- <input list="batsmen" ng-model="p1">
+                                        <input list="batsmen" ng-model="p1">
+                                        <input list="batsmen" ng-model="p1"> -->
+
+
+                <!-- <label class="sr-only" for="p1">Batsman</label> -->
+                <input type="text" list="team1" class="form-control mb-2 mr-sm-2 mb-sm-0" ng-model="p1" id="p1" placeholder="Team1" autocomplete="off">
+
+                <!-- <label class="sr-only" for="p2">Bowler</label> -->
+                <input type="text" list="team2" class="form-control  mb-2 mr-sm-2 mb-sm-0" ng-model="p2" id="p2" placeholder="Team2" autocomplete="off">
+
+                <!-- <label class="sr-only" for="stadium">Stadium</label> -->
+                <input type="text" list="stadiums" class="form-control  mb-2 mr-sm-2 mb-sm-0" ng-model="stadium" id="stadium" placeholder="Stadium"
+                    autocomplete="off">
+
+
+                <datalist id="team1">
+                    <option ng-repeat="team in teams" value="{{team}}">
+                </datalist>
+                <datalist id="team2">
+                    <option ng-repeat="team in teams" value="{{team}}">
+                </datalist>
+                <datalist id="stadiums">
+                    <option ng-repeat="stadium in stadiums" value="{{stadium.name}}">
+                </datalist>
+                <button type="submit" class="btn btn-primary">Submit
+                    <span ng-if="sent">
+                        <i class="fa fa-spinner" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </form>
+
+
+
+            <div class="row" style="margin-top:3rem;">
+                <div ng-if="result" class="col-lg-12">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-header text-center">{{p1}}</div>
+                                <!-- <img class="card-img-top" ng-src="/images/{{result.batsman}}.png" alt="Card image cap" width="512px" height=""> -->
+                                <div class="card-body" ng-repeat="player in team1">
+
+                                    <div class="card bg-white mb-3">
+                                        <div class="card-header text-center">{{player.player}}</div>
+                                        <div class="card-body">
+                                            <!-- <h4 class="card-title"></h4> -->
+                                            <table>
+                                                <tr>
+                                                    <td>runs scored</td>
+                                                    <td>{{player.runs_scored}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>balls_faced</td>
+                                                    <td>{{player.balls_faced}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>dots</td>
+                                                    <td>{{player.dots}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>got_out</td>
+                                                    <td>{{player.got_out}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>fours</td>
+                                                    <td>{{player.fours}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>sixes</td>
+                                                    <td>{{player.sixes}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>strikerate</td>
+                                                    <td>{{player.strikerate}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>balls_bowled</td>
+                                                    <td>{{player.balls_bowled}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>wic_taken</td>
+                                                    <td>{{player.wic_taken}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>runs_gave</td>
+                                                    <td>{{player.runs_gave}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>fourballs</td>
+                                                    <td>{{player.fourballs}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>sixerballs</td>
+                                                    <td>{{player.sixerballs}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>bowl_economy</td>
+                                                    <td>{{player.bowl_economy}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- <p class="card-title">{{result.batsman}}</p>
+                                    <p class="card-text">Strike Rate ::: {{result.strike_rate}}</p> -->
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-header text-center">{{p2}}</div>
+                                <!-- <img class="card-img-top" ng-src="/images/{{result.batsman}}.png" alt="Card image cap" width="512px" height=""> -->
+                                <div class="card-body" ng-repeat="player in team2">
+
+                                    <div class="card bg-white mb-3">
+                                            <div class="card-header text-center">{{player.player}}</div>
+                                        <div class="card-body">
+                                            <!-- <h4 class="card-title">{{player.player}}</h4> -->
+                                            <table>
+                                                <tr>
+                                                    <td>runs scored</td>
+                                                    <td>{{player.runs_scored}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>balls_faced</td>
+                                                    <td>{{player.balls_faced}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>dots</td>
+                                                    <td>{{player.dots}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>got_out</td>
+                                                    <td>{{player.got_out}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>fours</td>
+                                                    <td>{{player.fours}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>sixes</td>
+                                                    <td>{{player.sixes}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>strikerate</td>
+                                                    <td>{{player.strikerate}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>balls_bowled</td>
+                                                    <td>{{player.balls_bowled}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>wic_taken</td>
+                                                    <td>{{player.wic_taken}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>runs_gave</td>
+                                                    <td>{{player.runs_gave}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>fourballs</td>
+                                                    <td>{{player.fourballs}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>sixerballs</td>
+                                                    <td>{{player.sixerballs}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>bowl_economy</td>
+                                                    <td>{{player.bowl_economy}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- <p class="card-title">{{result.batsman}}</p>
+                                        <p class="card-text">Strike Rate ::: {{result.strike_rate}}</p> -->
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="col-md-3">
+                            <div class="card bg-white mb-3">
+                                <div class="card-header text-center">Vs</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">{{result.stadium}}</h4>
+                                    <table>
+                                        <tr>
+                                            <td>runs</td>
+                                            <td>{{result.runs}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>balls</td>
+                                            <td>{{result.balls}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dots</td>
+                                            <td>{{result.dots}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>fours</td>
+                                            <td>{{result.fours}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sixes</td>
+                                            <td>{{result.sixes}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>wickets</td>
+                                            <td>{{result.wickets}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header text-center">Team2</div>
+                                <img class="card-img-top" ng-src="/images/{{result.bowler}}.png" alt="Card image cap" width="512px" height="">
+                                <div class="card-body">
+                                    <p class="card-title">{{result.bowler}}</p>
+                                    <p class="card-text">Bowling Economy ::: {{result.bowler_economy}}</p>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
